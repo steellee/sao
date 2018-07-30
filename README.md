@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #SAO项目介绍
 
     基于Spring Cloud(Finchley版本)架构体系，整合各微服务基础组件的最新最全的脚手架工程。
@@ -138,3 +139,7 @@
 
 
 
+=======
+# sao
+基于Spring Cloud(Finchley版本)架构体系，整合各微服务基础组件的最新最全的脚手架工程。微服务架构： Spring Cloud全家桶 + Spring boot 2.x + mybatis + druid + mysql + Sharding-JDBC 3.x + Redis Sentinel + Spring-Session； 全方位监控：Spring Boot Admin 2.x + Turbine + Hystrix Dashboard + Zipkin
+>>>>>>> fe52bb77ae55968a05c9919acaa6e2f00ee3ed46
