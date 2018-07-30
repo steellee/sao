@@ -1,16 +1,16 @@
-#SAO项目介绍
+# SAO项目介绍
 
     基于Spring Cloud(Finchley版本)架构体系，整合各微服务基础组件的最新最全的脚手架工程。
 
-##SAO背景目的
+## SAO背景目的
 
     本项目是基于开发银行二类户开户平台，业务逻辑已经剥离，只剩下骨架及服务基础组件，只需稍加改造，就可以作为开发新项目的脚手架工程。
     本脚手架目的：为减少重复架构，统一基础服务，让开发人员把重心放在各微服务的业务逻辑的开发上来。
 
-##SAO功能技术点
+## SAO功能技术点
  
- | 技术        | 名称           | 官网  |
- | ------------- |:-------------:| -----:|
+ | 技术                | 名称                   | 官网                                     |
+ | --------------------|--------------------    | ---------------------------------------- |
  | Spring Cloud        | 分布式微服务框架       | https://projects.spring.io/spring-cloud/ |
  | Spring Boot         | 快速应用开发Spring框架 | https://spring.io/projects/spring-boot/ |
  | Spring session      | 分布式Session管理      | http://projects.spring.io/spring-session/ |
@@ -27,8 +27,9 @@
  | Turbine             | Hystrix熔断聚合组件    | https://github.com/spring-cloud-samples/turbine/ |
  | Zipkin              | 分布式链路跟踪系统     | https://zipkin.io/ |
 
-  
-##SAO脚手架模块说明
+
+
+## SAO脚手架模块说明
 
  ================================================
 * sao-gateway：平台网关
@@ -45,14 +46,14 @@
     
  ================================================
 
-###平台网关(sao-gateway)
+### 平台网关(sao-gateway)
 
     已整合灰度发布（蓝绿/金丝雀发布）、Ribbon均衡负载（自定义）请求限流、熔断降级、
     Swagger API文档，动态加载的过滤器等功能
     
     对应服务：http://localhost:8101
        
-###平台服务注册与发现服务中心(sao-eureka)
+### 平台服务注册与发现服务中心(sao-eureka)
 
     已支持单点/集群；
     1，单点：http://localhost:8201/eureka/
@@ -62,7 +63,7 @@
        对应服务：http://10.7.111.179:8201/eureka/
         
 
-###平台配置中心(sao-config)
+### 平台配置中心(sao-config)
 
     已支持Git/DB；
     1, Git配置：application-git.yml
@@ -71,7 +72,7 @@
     对应服务：http://localhost:8301
     
 
-###业务微服务Demo(cmbc-service)
+### 业务微服务Demo(cmbc-service)
 
 1.0 支持功能点：
 
@@ -97,9 +98,9 @@
     对应服务：http://localhost:8501/swagger-ui.html
     
  
-###管理监控(sao-manager)
+### 管理监控(sao-manager)
 
-####**（一）sao-sba综合管理监控：**
+#### **（一）sao-sba综合管理监控：**
 
 ##### 应用场景：
 
@@ -155,7 +156,7 @@
 ![图片名称](https://gitee.com/steellee/doc/raw/master/sao/img/turbine2.png)
 
 
-#####**（三）Zipkin服务追踪调用链：**
+##### **（三）Zipkin服务追踪调用链：**
 
 ##### 应用场景：
     在分布式系统中提供追踪服务调用解决方案
