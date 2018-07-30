@@ -1,6 +1,6 @@
 spring:
   application:
-    name: api-gateway
+    name: sao-gateway
 #  cloud:
 #    loadbalancer:
 #      retry:
@@ -13,12 +13,12 @@ server:
 eureka:
   instance:
     prefer-ip-address: true
-#    hostname: api-gateway
+#    hostname: sao-gateway
   client:
     serviceUrl:
       # Zuul客户端注册到了Eureka Server上，确保将多个Zuul节点集群高可用
       defaultZone: http://localhost:8201/eureka/
-#      defaultZone: http://10.7.111.178:1111/eureka/,http://10.7.111.179:1111/eureka/
+#      defaultZone: http://10.7.111.178:8201/eureka/,http://10.7.111.179:8201/eureka/
 
 zuul:
   routes:
@@ -30,8 +30,16 @@ zuul:
 #      sensitiveHeaders:
     #### 微服务sao-service
     cmbc-service:
-      path: /api-a/**           # /api-a/开头的url路由请求，将转发到sao-service这个微服务上
+      path: /api-c/**           # /api-c/开头的url路由请求，将转发到sao-service这个微服务上
       serviceId: cmbc-service # eureka服务发现中的服务
+    #### 微服务demoa-service
+    demoa-service:
+      path: /api-a/**           # /api-a/开头的url路由请求，将转发到demoa-service这个微服务上
+      serviceId: demoa-service # eureka服务发现中的服务
+    #### 微服务demob-service
+    demob-service:
+      path: /api-b/**           # /api-b/开头的url路由请求，将转发到demob-service这个微服务上
+      serviceId: demob-service # eureka服务发现中的服务
       #局部设置Ribbon的超时
 #        ribbon:
 #          # ribbon请求连接的超时时间
@@ -61,7 +69,7 @@ zuul:
 #user：通过授权用户进行区分，也包括匿名用户
 #*********************************************************
     policies:
-      # 针对此微服务请求url中含sao-service
+      # 针对此微服务请求url中含cmbc-service
       cmbc-service:
         limit: 60
 #        quota: 20

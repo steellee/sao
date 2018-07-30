@@ -130,7 +130,6 @@
 			</exclusions>
 		</dependency>
 
-
 		<!--注解@Slf4j方式-->
 		<dependency>
 			<groupId>org.projectlombok</groupId>
@@ -141,12 +140,12 @@
 		<dependency>
 			<groupId>io.springfox</groupId>
 			<artifactId>springfox-swagger2</artifactId>
-			<version>2.9.0</version>
+			<version>2.9.2</version>
 		</dependency>
 		<dependency>
 			<groupId>io.springfox</groupId>
 			<artifactId>springfox-swagger-ui</artifactId>
-			<version>2.9.0</version>
+			<version>2.9.2</version>
 		</dependency>
 
 		<!-- apache commons -->
@@ -233,14 +232,13 @@
 			<artifactId>sharding-jdbc-spring-boot-starter</artifactId>
 			<version>3.0.0.M1</version>
 		</dependency>
-
-		<!--&lt;!&ndash;coding代码方式时&ndash;&gt;
-		<dependency>
+		<!--coding代码方式时-->
+		<!--<dependency>
 			<groupId>io.shardingsphere</groupId>
 			<artifactId>sharding-jdbc</artifactId>
 			<version>3.0.0.M1</version>
-		</dependency>-->
-		<!--<dependency>
+		</dependency>
+		<dependency>
 			<groupId>io.shardingsphere</groupId>
 			<artifactId>sharding-jdbc-orchestration</artifactId>
 			<version>3.0.0.M1</version>

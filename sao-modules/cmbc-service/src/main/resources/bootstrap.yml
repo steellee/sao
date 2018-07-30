@@ -8,7 +8,6 @@ spring:
   cloud:
     config:
 #    分布式配置中心
-#      uri: http://localhost:1201
       uri: http://localhost:8301
 #      仓库中对应的profile版本
       profile: stage
@@ -31,7 +30,7 @@ management:
 
 
 # 配置服务注册中心
-#eureka.client.serviceUrl.defaultZone=http://localhost:1111/eureka/
+#eureka.client.serviceUrl.defaultZone=http://localhost:8201/eureka/
 
 #/****************************************************************************************
 # * 配置服务的路劲规则：

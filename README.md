@@ -20,10 +20,11 @@
     * Spring Boot Admin（2.x）：多维度综合监控
     * Turbine + Hystrix Dashboard：熔断服务监控
     * Zipkin：链路服务跟踪
-* Spring boot 2.x + mybatis + druid + mysql
+* Spring Boot 2.x + Mybatis + PageHelper + Druid + Mysql
+* 支持Swagger2构建RESTful API
 * Sharding-JDBC 3.x 主从分离(一主一从)
 * Redis Sentinel模式集群
-* Spring-Session + Redis: sso登录session redis缓存
+* Spring-Session + Redis: SSO单点登录，session redis缓存
     
  ================================================
 
@@ -39,25 +40,64 @@
     * sao-turbine：平台熔断监控
 * sao-modules
     * 	sao-common：工具类，共通配置，常用数据类型存放（例如VO模型对象定义，常量，枚举等）
-    * 	cmbc-service：民生银行相关开户微服务
-    * 	demoa-service：demo用服务
-    * 	demob-service：demo用服务
+    * 	cmbc-service：demo用微服务
+    * 	demoa-service：demo用微服务
+    * 	demob-service：demo用微服务
     
  ================================================
 
 ###平台网关(sao-gateway)
 
-    TODO
+    已整合灰度发布（蓝绿/金丝雀发布）、Ribbon均衡负载（自定义）请求限流、熔断降级、
+    Swagger API文档，动态加载的过滤器等功能
+    
+    对应服务：http://localhost:8101
        
 ###平台服务注册与发现服务中心(sao-eureka)
 
-    TODO
+    已支持单点/集群；
+    1，单点：http://localhost:8201/eureka/
+    2，集群node1启动： java -jar sao-eureka-1.0.0-SNAPSHOT.jar --spring.profiles.active=node1 
+       对应服务：http://10.7.111.178:8201/eureka/
+    3，集群node2启动： java -jar sao-eureka-1.0.0-SNAPSHOT.jar --spring.profiles.active=node2
+       对应服务：http://10.7.111.179:8201/eureka/
+        
 
 ###平台配置中心(sao-config)
 
-    TODO
+    已支持Git/DB；
+    1, Git配置：application-git.yml
+    2, DB配置存储：对应schema：sao_master，表：sys_config_properties
+    
+    对应服务：http://localhost:8301
     
 
+###业务微服务Demo(cmbc-service)
+
+1.0 支持功能点：
+
+    1.1 Spring Boot 2.x + Mybatis + PageHelper + Druid + Mysql
+    1.2 支持Swagger2构建RESTful API
+    1.3 Sharding-JDBC 3.x 主从分离(一主一从)
+        * 对应主从配置：application-shardingjdbc-masterslave.properties
+        * 对应主从：sao_master（主），sao_slave（从）
+        * 注意:sql在cmbc-service的resource下；另如需主从复制，需要服务器自行配置；
+    1.4 Redis Sentinel模式集群
+    1.5 Spring-Session + Redis: SSO单点登录，分布式Session管理
+        * 对应redis配置：application-redis.properties
+        * 对应redis集群节点：10.7.111.179:6379,10.7.111.178:6380,10.7.111.178:6381
+        * 对应redis哨兵节点：10.7.111.179:26379,10.7.111.178:26479,10.7.111.178:26579DB
+        * 注意：集群服务器环境需要自行配置， 请参照url： [TODO](www.baidu.com)
+        
+2.0 启动准备
+
+    2.1 已配置DB主从, 先建库和表，见sao_master.sql及sao_slave.sql
+    2.2 已配置redis集群节点, 先启动服务器的集群及哨兵节点
+    2.3 已配置bootstrap.yml, 先启动配置中心：sao-config
+    
+    对应服务：http://localhost:8501/swagger-ui.html
+    
+ 
 ###管理监控(sao-manager)
 
 ####**（一）sao-sba综合管理监控：**
@@ -134,3 +174,15 @@
         
     2.2 demo中，可启动demoa-service和demob-service两个微服务后，在zipkin server中追踪调用链
 
+
+md原生
+| 水果        | 价格    |  数量  |
+| --------   | -----:   | :----: |
+| 香蕉        | $1      |   5    |
+| 苹果        | $1      |   6    |
+| 草莓        | $1      |   7    |
+
+
+其它
+图片![图片名称](https://cdn2.jianshu.io/assets/web/nav-logo-4c7bbafe27adc892f3046e6978459bac.png)
+链接[链接名称](http://baidu.com)
