@@ -8,25 +8,24 @@
     本脚手架目的：为减少重复架构，统一基础服务，让开发人员把重心放在各微服务的业务逻辑的开发上来。
 
 ##SAO功能技术点
-
- ================================================
-* Spring Cloud全家桶(Finchley版本)
-    * Spring Cloud Eureka
-    * Spring Cloud Ribbon
-    * Spring Cloud Hystrix
-    * Spring Cloud Config
-    * Spring Cloud Zuul
-* 微服务监控管理相关
-    * Spring Boot Admin（2.x）：多维度综合监控
-    * Turbine + Hystrix Dashboard：熔断服务监控
-    * Zipkin：链路服务跟踪
-* Spring Boot 2.x + Mybatis + PageHelper + Druid + Mysql
-* 支持Swagger2构建RESTful API
-* Sharding-JDBC 3.x 主从分离(一主一从)
-* Redis Sentinel模式集群
-* Spring-Session + Redis: SSO单点登录，session redis缓存
-    
- ================================================
+ 
+ | 技术        | 名称           | 官网  |
+ | ------------- |:-------------:| -----:|
+ | Spring Cloud        | 分布式微服务框架       | https://projects.spring.io/spring-cloud/ |
+ | Spring Boot         | 快速应用开发Spring框架 | https://spring.io/projects/spring-boot/ |
+ | Spring session      | 分布式Session管理      | http://projects.spring.io/spring-session/ |
+ | MyBatis             | ORM框架                | http://www.mybatis.org/mybatis-3/zh/index.html/ |
+ | MyBatis Generator   | 代码生成               | http://www.mybatis.org/generator/index.html/ |
+ | PageHelper          | MyBatis物理分页插件    | http://git.oschina.net/free/Mybatis_PageHelper |
+ | Druid               | 数据库连接池           | https://github.com/alibaba/druid/ |
+ | Sharding-JDBC       | 分布式数据库中间件     | https://github.com/alibaba/druid/ |
+ | Redis               | 分布式缓存数据库       | https://redis.io/ |
+ | Swagger2            | 接口测试框架           | http://swagger.io/ |
+ | Maven               | 项目构建管理           | http://maven.apache.org/ |
+ | Spring Boot Admin   | 分布式微服务监控中心   | https://github.com/codecentric/spring-boot-admin/ |
+ | Hystrix-dashboard   | Hystrix的仪表盘组件    | https://github.com/spring-cloud-samples/hystrix-dashboard/ |
+ | Turbine             | Hystrix熔断聚合组件    | https://github.com/spring-cloud-samples/turbine/ |
+ | Zipkin              | 分布式链路跟踪系统     | https://zipkin.io/ |
 
   
 ##SAO脚手架模块说明
@@ -185,10 +184,5 @@
     2.2 demo中，可启动demoa-service和demob-service两个微服务后，在zipkin server中追踪调用链
 
 
-md原生
 
-| Tables        | Are           | Cool  |
-| ------------- |:-------------:| -----:|
-| col 3 is      | right-aligned | $1600 |
-| col 2 is      | centered      |   $12 |
-| zebra stripes | are neat      |    $1 |
+
