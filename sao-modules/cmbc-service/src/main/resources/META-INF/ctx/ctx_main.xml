@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:task="http://www.springframework.org/schema/task"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-4.0.xsd"
+	default-autowire="byName">
+	
+	<!--<bean class="com.lakala.sh.framework.dal.annotation.DalProxyAwareBeanPostProcessor"/>-->
+	
+	<!--<import resource="ctx_dal.xml"/>-->
+	<!--
+	<import resource="ctx_web.xml"/>
+	 -->
+	
+   <!-- <bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>
+	
+	<bean id="producer" class="com.lakala.msc.factory.MQProducerFactoryBean">
+		<constructor-arg value="${msc.producer.cfg.location}" />
+    	<constructor-arg value="${msc.producer.topic}" />
+	</bean>-->
+	
+	 
+	<!---->
+	<!--<bean id="messageEventProducer" class="com.lakala.sh.framework.core.event.MessageEventProducer"/>-->
+	
+	
+	<!---->
+	<!--<bean id="messageEventConsumer" class="com.lakala.sh.framework.core.event.MessageEventConsumer">
+		<property name="location" value="${msc.consumer.cfg.location}"/>
+	</bean>-->
+	
+	
+	<!--<bean id="hystrixFilterConfig" class="com.lakala.sh.framework.remote.hystrix.HystrixFilterConfig">
+		<property name="circuitBreakerRequestVolumeThreshold" value="20" />
+		<property name="circuitBreakerSleepWindowInMilliseconds" value="30000" />
+		<property name="circuitBreakerErrorThresholdPercentage" value="50" />
+		<property name="threadPoolCoreSize" value="30" />
+		<property name="userCircuitBreaker" value="false" />
+	</bean>
+
+	<task:executor id="executor" pool-size="150"/>
+	<task:annotation-driven executor="executor"/>-->
+</beans>

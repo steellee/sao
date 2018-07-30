@@ -1,0 +1,545 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lakala.sh.sao.cmbc.mapper.StaffInfoMapper" >
+  <!--开启二级缓存 mybatis.configuration.cache-enabled=true-->
+  <cache  flushInterval="60000"/>
+
+  <resultMap id="BaseResultMap" type="com.lakala.sh.sao.common.vo.StaffInfo" >
+    <id column="STAFF_ID" property="staffId" jdbcType="VARCHAR" />
+    <result column="STAFF_CODE" property="staffCode" jdbcType="VARCHAR" />
+    <result column="STAFF_NAME" property="staffName" jdbcType="VARCHAR" />
+    <result column="STAFF_TYPE" property="staffType" jdbcType="VARCHAR" />
+    <result column="ANNUAL_VACATION_DAYS" property="annualVacationDays" jdbcType="DECIMAL" />
+    <result column="ORGAN_ID" property="organId" jdbcType="VARCHAR" />
+    <result column="ID_CARD" property="idCard" jdbcType="VARCHAR" />
+    <result column="ASSUMED_NAME" property="assumedName" jdbcType="VARCHAR" />
+    <result column="SEX_TYPE" property="sexType" jdbcType="VARCHAR" />
+    <result column="EDUCATION_LEVEL" property="educationLevel" jdbcType="VARCHAR" />
+    <result column="MAJOR_TYPE" property="majorType" jdbcType="VARCHAR" />
+    <result column="BEGIN_WORK_DATE" property="beginWorkDate" jdbcType="DATE" />
+    <result column="GRADUATE_SCHOOL" property="graduateSchool" jdbcType="VARCHAR" />
+    <result column="MARITAL_STATUS" property="maritalStatus" jdbcType="VARCHAR" />
+    <result column="NATIONALITY" property="nationality" jdbcType="VARCHAR" />
+    <result column="NATIVE_PLACE" property="nativePlace" jdbcType="VARCHAR" />
+    <result column="POST_NO" property="postNo" jdbcType="VARCHAR" />
+    <result column="ADDRESS" property="address" jdbcType="VARCHAR" />
+    <result column="MOBILE_NO" property="mobileNo" jdbcType="VARCHAR" />
+    <result column="LINK_TEL" property="linkTel" jdbcType="VARCHAR" />
+    <result column="QQ_CODE" property="qqCode" jdbcType="VARCHAR" />
+    <result column="WE_CODE" property="weCode" jdbcType="VARCHAR" />
+    <result column="WORK_TEL" property="workTel" jdbcType="VARCHAR" />
+    <result column="ICE_CONTACTOR" property="iceContactor" jdbcType="VARCHAR" />
+    <result column="ICE_TEL" property="iceTel" jdbcType="VARCHAR" />
+    <result column="BIRTHDAY" property="birthday" jdbcType="DATE" />
+    <result column="DUTY_DATE" property="dutyDate" jdbcType="DATE" />
+    <result column="OUT_DUTY_DATE" property="outDutyDate" jdbcType="DATE" />
+    <result column="POSITION_TYPE" property="positionType" jdbcType="VARCHAR" />
+    <result column="POSITION_LEVEL" property="positionLevel" jdbcType="VARCHAR" />
+    <result column="PHOTOPATH" property="photopath" jdbcType="VARCHAR" />
+    <result column="EMAIL" property="email" jdbcType="VARCHAR" />
+    <result column="CREATE_BY" property="createBy" jdbcType="VARCHAR" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="UPDATE_BY" property="updateBy" jdbcType="VARCHAR" />
+    <result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="STATUS" property="status" jdbcType="INTEGER" />
+    <result column="ENGLISH_NAME" property="englishName" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.lakala.sh.sao.common.vo.StaffInfo" extends="BaseResultMap" >
+  </resultMap>
+  <sql id="Base_Column_List" >
+    STAFF_ID, STAFF_CODE, STAFF_NAME, STAFF_TYPE, ANNUAL_VACATION_DAYS, ORGAN_ID, ID_CARD,
+    ASSUMED_NAME, SEX_TYPE, EDUCATION_LEVEL, MAJOR_TYPE, BEGIN_WORK_DATE, GRADUATE_SCHOOL,
+    MARITAL_STATUS, NATIONALITY, NATIVE_PLACE, POST_NO, ADDRESS, MOBILE_NO, LINK_TEL,
+    QQ_CODE, WE_CODE, WORK_TEL, ICE_CONTACTOR, ICE_TEL, BIRTHDAY, DUTY_DATE, OUT_DUTY_DATE,
+    POSITION_TYPE, POSITION_LEVEL, PHOTOPATH, EMAIL, CREATE_BY, CREATE_TIME, UPDATE_BY,
+    UPDATE_TIME, STATUS, ENGLISH_NAME
+  </sql>
+
+  <!--禁用二级缓存 useCache="false"-->
+  <!--刷新二级缓存 flushCache="true"-->
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String"  >
+    select
+    <include refid="Base_Column_List" />
+    <!--,-->
+    <!--<include refid="Blob_Column_List" />-->
+    from sys_staff_info
+    where STAFF_ID = #{staffId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from sys_staff_info
+    where STAFF_ID = #{staffId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.lakala.sh.sao.common.vo.StaffInfo" >
+    insert into sys_staff_info (STAFF_ID, STAFF_CODE, STAFF_NAME,
+    STAFF_TYPE, ANNUAL_VACATION_DAYS, ORGAN_ID,
+    ID_CARD, ASSUMED_NAME, SEX_TYPE,
+    EDUCATION_LEVEL, MAJOR_TYPE, BEGIN_WORK_DATE,
+    GRADUATE_SCHOOL, MARITAL_STATUS, NATIONALITY,
+    NATIVE_PLACE, POST_NO, ADDRESS,
+    MOBILE_NO, LINK_TEL, QQ_CODE,
+    WE_CODE, WORK_TEL, ICE_CONTACTOR,
+    ICE_TEL, BIRTHDAY, DUTY_DATE,
+    OUT_DUTY_DATE, POSITION_TYPE, POSITION_LEVEL,
+    PHOTOPATH, EMAIL, CREATE_BY,
+    CREATE_TIME, UPDATE_BY, UPDATE_TIME,
+    STATUS, ENGLISH_NAME
+
+    )
+    values (#{staffId,jdbcType=VARCHAR}, #{staffCode,jdbcType=VARCHAR}, #{staffName,jdbcType=VARCHAR},
+    #{staffType,jdbcType=VARCHAR}, #{annualVacationDays,jdbcType=DECIMAL}, #{organId,jdbcType=VARCHAR},
+    #{idCard,jdbcType=VARCHAR}, #{assumedName,jdbcType=VARCHAR}, #{sexType,jdbcType=VARCHAR},
+    #{educationLevel,jdbcType=VARCHAR}, #{majorType,jdbcType=VARCHAR}, #{beginWorkDate,jdbcType=DATE},
+    #{graduateSchool,jdbcType=VARCHAR}, #{maritalStatus,jdbcType=VARCHAR}, #{nationality,jdbcType=VARCHAR},
+    #{nativePlace,jdbcType=VARCHAR}, #{postNo,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR},
+    #{mobileNo,jdbcType=VARCHAR}, #{linkTel,jdbcType=VARCHAR}, #{qqCode,jdbcType=VARCHAR},
+    #{weCode,jdbcType=VARCHAR}, #{workTel,jdbcType=VARCHAR}, #{iceContactor,jdbcType=VARCHAR},
+    #{iceTel,jdbcType=VARCHAR}, #{birthday,jdbcType=DATE}, #{dutyDate,jdbcType=DATE},
+    #{outDutyDate,jdbcType=DATE}, #{positionType,jdbcType=VARCHAR}, #{positionLevel,jdbcType=VARCHAR},
+    #{photopath,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{createBy,jdbcType=VARCHAR},
+    #{createTime,jdbcType=TIMESTAMP}, #{updateBy,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP},
+    #{status,jdbcType=INTEGER}, #{englishName,jdbcType=VARCHAR}
+    )
+  </insert>
+  <insert id="insertSelective" parameterType="com.lakala.sh.sao.common.vo.StaffInfo" >
+    insert into sys_staff_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="staffId != null" >
+        STAFF_ID,
+      </if>
+      <if test="staffCode != null" >
+        STAFF_CODE,
+      </if>
+      <if test="staffName != null" >
+        STAFF_NAME,
+      </if>
+      <if test="staffType != null" >
+        STAFF_TYPE,
+      </if>
+      <if test="annualVacationDays != null" >
+        ANNUAL_VACATION_DAYS,
+      </if>
+      <if test="organId != null" >
+        ORGAN_ID,
+      </if>
+      <if test="idCard != null" >
+        ID_CARD,
+      </if>
+      <if test="assumedName != null" >
+        ASSUMED_NAME,
+      </if>
+      <if test="sexType != null" >
+        SEX_TYPE,
+      </if>
+      <if test="educationLevel != null" >
+        EDUCATION_LEVEL,
+      </if>
+      <if test="majorType != null" >
+        MAJOR_TYPE,
+      </if>
+      <if test="beginWorkDate != null" >
+        BEGIN_WORK_DATE,
+      </if>
+      <if test="graduateSchool != null" >
+        GRADUATE_SCHOOL,
+      </if>
+      <if test="maritalStatus != null" >
+        MARITAL_STATUS,
+      </if>
+      <if test="nationality != null" >
+        NATIONALITY,
+      </if>
+      <if test="nativePlace != null" >
+        NATIVE_PLACE,
+      </if>
+      <if test="postNo != null" >
+        POST_NO,
+      </if>
+      <if test="address != null" >
+        ADDRESS,
+      </if>
+      <if test="mobileNo != null" >
+        MOBILE_NO,
+      </if>
+      <if test="linkTel != null" >
+        LINK_TEL,
+      </if>
+      <if test="qqCode != null" >
+        QQ_CODE,
+      </if>
+      <if test="weCode != null" >
+        WE_CODE,
+      </if>
+      <if test="workTel != null" >
+        WORK_TEL,
+      </if>
+      <if test="iceContactor != null" >
+        ICE_CONTACTOR,
+      </if>
+      <if test="iceTel != null" >
+        ICE_TEL,
+      </if>
+      <if test="birthday != null" >
+        BIRTHDAY,
+      </if>
+      <if test="dutyDate != null" >
+        DUTY_DATE,
+      </if>
+      <if test="outDutyDate != null" >
+        OUT_DUTY_DATE,
+      </if>
+      <if test="positionType != null" >
+        POSITION_TYPE,
+      </if>
+      <if test="positionLevel != null" >
+        POSITION_LEVEL,
+      </if>
+      <if test="photopath != null" >
+        PHOTOPATH,
+      </if>
+      <if test="email != null" >
+        EMAIL,
+      </if>
+      <if test="createBy != null" >
+        CREATE_BY,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="updateBy != null" >
+        UPDATE_BY,
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME,
+      </if>
+      <if test="status != null" >
+        STATUS,
+      </if>
+      <if test="englishName != null" >
+        ENGLISH_NAME,
+      </if>
+
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="staffId != null" >
+        #{staffId,jdbcType=VARCHAR},
+      </if>
+      <if test="staffCode != null" >
+        #{staffCode,jdbcType=VARCHAR},
+      </if>
+      <if test="staffName != null" >
+        #{staffName,jdbcType=VARCHAR},
+      </if>
+      <if test="staffType != null" >
+        #{staffType,jdbcType=VARCHAR},
+      </if>
+      <if test="annualVacationDays != null" >
+        #{annualVacationDays,jdbcType=DECIMAL},
+      </if>
+      <if test="organId != null" >
+        #{organId,jdbcType=VARCHAR},
+      </if>
+      <if test="idCard != null" >
+        #{idCard,jdbcType=VARCHAR},
+      </if>
+      <if test="assumedName != null" >
+        #{assumedName,jdbcType=VARCHAR},
+      </if>
+      <if test="sexType != null" >
+        #{sexType,jdbcType=VARCHAR},
+      </if>
+      <if test="educationLevel != null" >
+        #{educationLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="majorType != null" >
+        #{majorType,jdbcType=VARCHAR},
+      </if>
+      <if test="beginWorkDate != null" >
+        #{beginWorkDate,jdbcType=DATE},
+      </if>
+      <if test="graduateSchool != null" >
+        #{graduateSchool,jdbcType=VARCHAR},
+      </if>
+      <if test="maritalStatus != null" >
+        #{maritalStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="nationality != null" >
+        #{nationality,jdbcType=VARCHAR},
+      </if>
+      <if test="nativePlace != null" >
+        #{nativePlace,jdbcType=VARCHAR},
+      </if>
+      <if test="postNo != null" >
+        #{postNo,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="mobileNo != null" >
+        #{mobileNo,jdbcType=VARCHAR},
+      </if>
+      <if test="linkTel != null" >
+        #{linkTel,jdbcType=VARCHAR},
+      </if>
+      <if test="qqCode != null" >
+        #{qqCode,jdbcType=VARCHAR},
+      </if>
+      <if test="weCode != null" >
+        #{weCode,jdbcType=VARCHAR},
+      </if>
+      <if test="workTel != null" >
+        #{workTel,jdbcType=VARCHAR},
+      </if>
+      <if test="iceContactor != null" >
+        #{iceContactor,jdbcType=VARCHAR},
+      </if>
+      <if test="iceTel != null" >
+        #{iceTel,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null" >
+        #{birthday,jdbcType=DATE},
+      </if>
+      <if test="dutyDate != null" >
+        #{dutyDate,jdbcType=DATE},
+      </if>
+      <if test="outDutyDate != null" >
+        #{outDutyDate,jdbcType=DATE},
+      </if>
+      <if test="positionType != null" >
+        #{positionType,jdbcType=VARCHAR},
+      </if>
+      <if test="positionLevel != null" >
+        #{positionLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="photopath != null" >
+        #{photopath,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="createBy != null" >
+        #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateBy != null" >
+        #{updateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="englishName != null" >
+        #{englishName,jdbcType=VARCHAR},
+      </if>
+
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lakala.sh.sao.common.vo.StaffInfo" >
+    update sys_staff_info
+
+    <set >
+      <if test="staffCode != null" >
+        STAFF_CODE = #{staffCode,jdbcType=VARCHAR},
+      </if>
+      <if test="staffName != null" >
+        STAFF_NAME = #{staffName,jdbcType=VARCHAR},
+      </if>
+      <if test="staffType != null" >
+        STAFF_TYPE = #{staffType,jdbcType=VARCHAR},
+      </if>
+      <if test="annualVacationDays != null" >
+        ANNUAL_VACATION_DAYS = #{annualVacationDays,jdbcType=DECIMAL},
+      </if>
+      <if test="organId != null" >
+        ORGAN_ID = #{organId,jdbcType=VARCHAR},
+      </if>
+      <if test="idCard != null" >
+        ID_CARD = #{idCard,jdbcType=VARCHAR},
+      </if>
+      <if test="assumedName != null" >
+        ASSUMED_NAME = #{assumedName,jdbcType=VARCHAR},
+      </if>
+      <if test="sexType != null" >
+        SEX_TYPE = #{sexType,jdbcType=VARCHAR},
+      </if>
+      <if test="educationLevel != null" >
+        EDUCATION_LEVEL = #{educationLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="majorType != null" >
+        MAJOR_TYPE = #{majorType,jdbcType=VARCHAR},
+      </if>
+      <if test="beginWorkDate != null" >
+        BEGIN_WORK_DATE = #{beginWorkDate,jdbcType=DATE},
+      </if>
+      <if test="graduateSchool != null" >
+        GRADUATE_SCHOOL = #{graduateSchool,jdbcType=VARCHAR},
+      </if>
+      <if test="maritalStatus != null" >
+        MARITAL_STATUS = #{maritalStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="nationality != null" >
+        NATIONALITY = #{nationality,jdbcType=VARCHAR},
+      </if>
+      <if test="nativePlace != null" >
+        NATIVE_PLACE = #{nativePlace,jdbcType=VARCHAR},
+      </if>
+      <if test="postNo != null" >
+        POST_NO = #{postNo,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        ADDRESS = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="mobileNo != null" >
+        MOBILE_NO = #{mobileNo,jdbcType=VARCHAR},
+      </if>
+      <if test="linkTel != null" >
+        LINK_TEL = #{linkTel,jdbcType=VARCHAR},
+      </if>
+      <if test="qqCode != null" >
+        QQ_CODE = #{qqCode,jdbcType=VARCHAR},
+      </if>
+      <if test="weCode != null" >
+        WE_CODE = #{weCode,jdbcType=VARCHAR},
+      </if>
+      <if test="workTel != null" >
+        WORK_TEL = #{workTel,jdbcType=VARCHAR},
+      </if>
+      <if test="iceContactor != null" >
+        ICE_CONTACTOR = #{iceContactor,jdbcType=VARCHAR},
+      </if>
+      <if test="iceTel != null" >
+        ICE_TEL = #{iceTel,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null" >
+        BIRTHDAY = #{birthday,jdbcType=DATE},
+      </if>
+      <if test="dutyDate != null" >
+        DUTY_DATE = #{dutyDate,jdbcType=DATE},
+      </if>
+      <if test="outDutyDate != null" >
+        OUT_DUTY_DATE = #{outDutyDate,jdbcType=DATE},
+      </if>
+      <if test="positionType != null" >
+        POSITION_TYPE = #{positionType,jdbcType=VARCHAR},
+      </if>
+      <if test="positionLevel != null" >
+        POSITION_LEVEL = #{positionLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="photopath != null" >
+        PHOTOPATH = #{photopath,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        EMAIL = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="createBy != null" >
+        CREATE_BY = #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateBy != null" >
+        UPDATE_BY = #{updateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        STATUS = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="englishName != null" >
+        ENGLISH_NAME = #{englishName,jdbcType=VARCHAR},
+      </if>
+
+    </set>
+    where STAFF_ID = #{staffId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.lakala.sh.sao.common.vo.StaffInfo" >
+    update sys_staff_info
+    set STAFF_CODE = #{staffCode,jdbcType=VARCHAR},
+    STAFF_NAME = #{staffName,jdbcType=VARCHAR},
+    STAFF_TYPE = #{staffType,jdbcType=VARCHAR},
+    ANNUAL_VACATION_DAYS = #{annualVacationDays,jdbcType=DECIMAL},
+    ORGAN_ID = #{organId,jdbcType=VARCHAR},
+    ID_CARD = #{idCard,jdbcType=VARCHAR},
+    ASSUMED_NAME = #{assumedName,jdbcType=VARCHAR},
+    SEX_TYPE = #{sexType,jdbcType=VARCHAR},
+    EDUCATION_LEVEL = #{educationLevel,jdbcType=VARCHAR},
+    MAJOR_TYPE = #{majorType,jdbcType=VARCHAR},
+    BEGIN_WORK_DATE = #{beginWorkDate,jdbcType=DATE},
+    GRADUATE_SCHOOL = #{graduateSchool,jdbcType=VARCHAR},
+    MARITAL_STATUS = #{maritalStatus,jdbcType=VARCHAR},
+    NATIONALITY = #{nationality,jdbcType=VARCHAR},
+    NATIVE_PLACE = #{nativePlace,jdbcType=VARCHAR},
+    POST_NO = #{postNo,jdbcType=VARCHAR},
+    ADDRESS = #{address,jdbcType=VARCHAR},
+    MOBILE_NO = #{mobileNo,jdbcType=VARCHAR},
+    LINK_TEL = #{linkTel,jdbcType=VARCHAR},
+    QQ_CODE = #{qqCode,jdbcType=VARCHAR},
+    WE_CODE = #{weCode,jdbcType=VARCHAR},
+    WORK_TEL = #{workTel,jdbcType=VARCHAR},
+    ICE_CONTACTOR = #{iceContactor,jdbcType=VARCHAR},
+    ICE_TEL = #{iceTel,jdbcType=VARCHAR},
+    BIRTHDAY = #{birthday,jdbcType=DATE},
+    DUTY_DATE = #{dutyDate,jdbcType=DATE},
+    OUT_DUTY_DATE = #{outDutyDate,jdbcType=DATE},
+    POSITION_TYPE = #{positionType,jdbcType=VARCHAR},
+    POSITION_LEVEL = #{positionLevel,jdbcType=VARCHAR},
+    PHOTOPATH = #{photopath,jdbcType=VARCHAR},
+    EMAIL = #{email,jdbcType=VARCHAR},
+    CREATE_BY = #{createBy,jdbcType=VARCHAR},
+    CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+    UPDATE_BY = #{updateBy,jdbcType=VARCHAR},
+    UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+    STATUS = #{status,jdbcType=INTEGER},
+    ENGLISH_NAME = #{englishName,jdbcType=VARCHAR},
+    where STAFF_ID = #{staffId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lakala.sh.sao.common.vo.StaffInfo" >
+    update sys_staff_info
+    set STAFF_CODE = #{staffCode,jdbcType=VARCHAR},
+    STAFF_NAME = #{staffName,jdbcType=VARCHAR},
+    STAFF_TYPE = #{staffType,jdbcType=VARCHAR},
+    ANNUAL_VACATION_DAYS = #{annualVacationDays,jdbcType=DECIMAL},
+    ORGAN_ID = #{organId,jdbcType=VARCHAR},
+    ID_CARD = #{idCard,jdbcType=VARCHAR},
+    ASSUMED_NAME = #{assumedName,jdbcType=VARCHAR},
+    SEX_TYPE = #{sexType,jdbcType=VARCHAR},
+    EDUCATION_LEVEL = #{educationLevel,jdbcType=VARCHAR},
+    MAJOR_TYPE = #{majorType,jdbcType=VARCHAR},
+    BEGIN_WORK_DATE = #{beginWorkDate,jdbcType=DATE},
+    GRADUATE_SCHOOL = #{graduateSchool,jdbcType=VARCHAR},
+    MARITAL_STATUS = #{maritalStatus,jdbcType=VARCHAR},
+    NATIONALITY = #{nationality,jdbcType=VARCHAR},
+    NATIVE_PLACE = #{nativePlace,jdbcType=VARCHAR},
+    POST_NO = #{postNo,jdbcType=VARCHAR},
+    ADDRESS = #{address,jdbcType=VARCHAR},
+    MOBILE_NO = #{mobileNo,jdbcType=VARCHAR},
+    LINK_TEL = #{linkTel,jdbcType=VARCHAR},
+    QQ_CODE = #{qqCode,jdbcType=VARCHAR},
+    WE_CODE = #{weCode,jdbcType=VARCHAR},
+    WORK_TEL = #{workTel,jdbcType=VARCHAR},
+    ICE_CONTACTOR = #{iceContactor,jdbcType=VARCHAR},
+    ICE_TEL = #{iceTel,jdbcType=VARCHAR},
+    BIRTHDAY = #{birthday,jdbcType=DATE},
+    DUTY_DATE = #{dutyDate,jdbcType=DATE},
+    OUT_DUTY_DATE = #{outDutyDate,jdbcType=DATE},
+    POSITION_TYPE = #{positionType,jdbcType=VARCHAR},
+    POSITION_LEVEL = #{positionLevel,jdbcType=VARCHAR},
+    PHOTOPATH = #{photopath,jdbcType=VARCHAR},
+    EMAIL = #{email,jdbcType=VARCHAR},
+    CREATE_BY = #{createBy,jdbcType=VARCHAR},
+    CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+    UPDATE_BY = #{updateBy,jdbcType=VARCHAR},
+    UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+    STATUS = #{status,jdbcType=INTEGER},
+    ENGLISH_NAME = #{englishName,jdbcType=VARCHAR}
+    where STAFF_ID = #{staffId,jdbcType=VARCHAR}
+  </update>
+
+  <select id="getAllStaff" resultMap="ResultMapWithBLOBs">
+    SELECT * FROM sys_staff_info
+  </select>
+</mapper>

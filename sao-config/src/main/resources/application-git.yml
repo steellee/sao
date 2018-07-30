@@ -1,0 +1,42 @@
+#配置服务的基本信息以及Git仓库的相关信息
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+          # git仓库
+          uri: http://git.oschina.net/didispace/config-repo-demo/
+          # 访问git下文件夹repo
+#          search-paths: repo
+          # 访问Git仓库的用户名
+#          username: guest
+          # 访问Git仓库的用户密码
+#          password: guest
+
+#  profiles:
+#  Config Server会默认从应用的src/main/resource目录下检索配置文件
+#    active: native
+
+server:
+  port: 1201
+
+# 配置服务注册中心
+#对应服务注册中心的配置内容，指定服务注册中心的位置
+#eureka.client.serviceUrl.defaultZone=http://10.7.111.178:1111/eureka/,http://10.7.111.179:1111/eureka/
+#公用eureka的服务注册中心
+#eureka.client.serviceUrl.defaultZone=http://eureka.didispace.com/eureka/
+
+
+
+
+#/****************************************************************************************
+# * 配置服务的路劲规则：
+# *
+# * /{application}/{profile}[/{label}]
+# * /{application}-{profile}.yml
+# * /{label}/{application}-{profile}.yml
+# * /{application}-{profile}.properties
+# * /{label}/{application}-{profile}.properties
+# ****************************************************************************************/

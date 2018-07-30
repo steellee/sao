@@ -1,0 +1,44 @@
+#系统级别： bootstrap.yml（bootstrap.properties）先加载，用于应用程序上下文的引导阶段，由父Spring ApplicationContext加载。
+#应用级别： application.yml（application.properties）后加载
+spring:
+  # 指定微服务的名称后续在调用的时候只需要使用该名称就可以进行服务的访问
+  application:
+    # 注意：目前测试用server 中git仓库中只有config-client-{profile}.yml，优先此name, 注掉properites中的spring.application.name=eureka-producer
+    name: cmbc-service
+  cloud:
+    config:
+#    分布式配置中心
+#      uri: http://localhost:1201
+      uri: http://localhost:8301
+#      仓库中对应的profile版本
+      profile: stage
+#      profile: dev
+#      仓库中分支
+      label: master
+#      password:
+#      username:
+
+
+#本地属性
+profileLocal: localtest1111
+
+#允许actuator配置自动刷新refresh接口
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh,health,info
+
+
+# 配置服务注册中心
+#eureka.client.serviceUrl.defaultZone=http://localhost:1111/eureka/
+
+#/****************************************************************************************
+# * 配置服务的路劲规则：
+# *
+# * /{application}/{profile}[/{label}]
+# * /{application}-{profile}.yml
+# * /{label}/{application}-{profile}.yml
+# * /{application}-{profile}.properties
+# * /{label}/{application}-{profile}.properties
+# ****************************************************************************************/

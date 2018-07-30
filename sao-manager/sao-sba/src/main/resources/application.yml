@@ -1,0 +1,78 @@
+info:
+  version: @project.version@
+
+spring:
+  application:
+    name: sba-server
+  security:
+    user:
+      name: admin
+      password: admin
+
+#>>>>>>>>>>>>邮件报警（微服务up or down时）
+  mail:
+#  私人邮箱测试，企业邮箱和私人邮箱配置不同
+    host: smtp.qq.com
+#   登录账号
+    username: xxx@qq.com
+#    开启IMAP/SMTP服务颁发的授权码
+    password: qgpjschvlfjhedjc1
+    port: 25
+    properties:
+      mail.debug: false
+      #安全认证(默认是true)
+      mail.smtp.auth: true
+      mail.smtp.port: 587
+      #开启ssl加密 否则项目启动时报530error
+      mail.smtp.ssl.enable: true
+      mail.smtp.ssl.socketFactory: sf
+  boot:
+    admin:
+      notify:
+        mail:
+          #  收件人
+          to: xxx@lakala.com
+          # 发件人
+          from: xxx@qq.com
+          # 从任何状态到up状态都不要发邮件通知
+          ignore-changes: "*:UP"
+#          可自定义邮件模板
+#          template: classpath:/META-INF/spring-boot-admin-server/mail/status-changed.html
+
+server:
+  port: 8411
+
+# tag::configuration-eureka[]
+eureka:
+  client:
+    # 表示eureka client间隔多久去拉取服务注册信息，默认为30秒
+    registryFetchIntervalSeconds: 5
+    service-url:
+      defaultZone: ${EUREKA_SERVICE_URL:http://localhost:8201}/eureka/
+  instance:
+    # 表示eureka client发送心跳给server端的频率，默认为30秒
+    leaseRenewalIntervalInSeconds: 10
+    # 健康检查的地址（依赖spring-boot-starter-actuator）
+    health-check-url-path: /actuator/health
+    # 放入请求头，向此服务发送请求，访问此服务的 Actuator 开放的端点
+    metadata-map:
+      # These two are needed so that the server
+      user.name: ${spring.security.user.name}
+      # can access the protected client endpoints
+      user.password: ${spring.security.user.password}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS
+# end::configuration-eureka[]
+
+#日志相关
+logging:
+  # 管理控台，Logfile菜单中显示以下文件所有日志
+  file: /var/log/sample-boot-application.log
+#  pattern: %clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(%5p) %clr(${PID}){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n%wEx

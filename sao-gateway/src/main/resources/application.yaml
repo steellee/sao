@@ -1,0 +1,178 @@
+spring:
+  application:
+    name: api-gateway
+#  cloud:
+#    loadbalancer:
+#      retry:
+#        # 该参数用来开启重试机制
+#        enabled: true
+
+
+server:
+  port: 8101
+eureka:
+  instance:
+    prefer-ip-address: true
+#    hostname: api-gateway
+  client:
+    serviceUrl:
+      # Zuul客户端注册到了Eureka Server上，确保将多个Zuul节点集群高可用
+      defaultZone: http://localhost:8201/eureka/
+#      defaultZone: http://10.7.111.178:1111/eureka/,http://10.7.111.179:1111/eureka/
+
+zuul:
+  routes:
+#    #### 微服务uaa-service
+#    uaa-service:
+#      path: /uaa/**
+#      serviceId: uaa-service
+#      stripPrefix: false
+#      sensitiveHeaders:
+    #### 微服务sao-service
+    cmbc-service:
+      path: /api-a/**           # /api-a/开头的url路由请求，将转发到sao-service这个微服务上
+      serviceId: cmbc-service # eureka服务发现中的服务
+      #局部设置Ribbon的超时
+#        ribbon:
+#          # ribbon请求连接的超时时间
+#          ConnectTimeout: 1000
+#          # 请求处理的超时时间
+#          ReadTimeout: 3000
+#      url: http://localhost:8080/ # 未使用Ribbon, 物理地址
+
+
+#>>>>>>>>>zuul限流
+#某个IP的客户端被限流并不影响其他客户端，即API网关对每个客户端限流是相互独立的
+  ratelimit:
+    # 开启限流
+    enabled: true
+    # 代理之后
+    behind-proxy: true
+    # 限流数据存储
+#    repository: redis
+    # 对应用来标识请求的key的前缀
+    key-prefix: cmbc-service
+#policies 配置多个url共用一个限流次数
+#*********************************************************
+#  特定的路由
+# 测试客户端 30秒内允许60个访问，并且要求总请求时间小于20秒
+#url：通过请求路径区分
+#origin：通过客户端IP地址区分
+#user：通过授权用户进行区分，也包括匿名用户
+#*********************************************************
+    policies:
+      # 针对此微服务请求url中含sao-service
+      cmbc-service:
+        limit: 60
+#        quota: 20
+        refreshInterval: 30
+#        type:
+#          - origin
+        type[0]:
+          type: url
+          matcher: /staff/count
+#        type[1]:
+#          type: url
+#          matcher: /staff/getstaff?id=admin&accessToken=token
+
+
+#>>>>>>>>>开启zuul路由重试
+  #任何一个服务实例关掉路由都会立刻转向另一个
+#  全局设置
+#  retryable: true
+# 局部设置
+#zuul.routes.<routename>.retryable=true
+
+#>>>>>>>>>配置zuul和ribbon
+  host:
+    # 适用于ApacheHttpClient，每个服务的http客户端连接池最大连接，默认值是200
+    max-total-connections: 500
+    # 适用于ApacheHttpClient，每个route可用的最大连接数，默认值是20
+    max-per-route-connections: 50
+#    # Zuul的路由未使用Ribbon时的Zuul超时
+#    connect-timeout-millis: 1000
+#    socket-timeout-millis: 3000
+  # Hystrix隔离模式 可选：SEMAPHORE THREAD
+#  ribbon-isolation-strategy: thread
+
+#>>>>>>>>>重定向后的HOST错误(解决：重定向地址变成了具体WebSite服务的地址了)
+#  add-host-header: true
+
+#>>>>>>>>>会话保持问题(解决：HTTP请求头信息中的Cookie和Authorization都没有被正确地传递给具体服务)
+#默认Cookie, Set-Cookie, Authorization都不传递
+#全局设置
+  sensitive-headers:
+#指定路由设置
+#zuul.routes.<routeName>.sensitive-headers=Cookie,Set-Cookie,Authorization
+#zuul.routes.<routeName>.custom-sensitive-headers=true
+
+#>>>>>>>>>最大并发请求，默认100
+  semaphore:
+    max-semaphores: 500
+  ribbon-isolation-strategy: semaphore
+
+#  ignored-headers: head1,head2    #  被忽略的Header不会被传播到其他的微服务去
+#  ignored-patterns: /**/admin/**    #  过滤掉path包含admin的请求
+#  prefix: /test    #  指定一个全局的前缀
+#  ignored-services:'*'   #  忽略所有请求
+
+
+#>>>>>>>ribbon均衡策略-无效
+#cmbc-service:  #服务名
+#  ribbon:
+#    # 按响应时间的权重分配请求，时间越短，权重越大，分配到请求的几率越大
+#    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+
+
+#>>>>>>>全局设置Ribbon的超时
+ribbon:
+  # ribbon请求连接的超时时间
+  ConnectTimeout: 3000
+  # 请求处理的超时时间
+  ReadTimeout: 6000
+
+
+# 以下隔离策略的超时时间默认值是1000。设置看不出作用;
+#hystrix:
+#  command:
+#    default:
+#     circuitBreaker:
+#       forceOpen: false
+#     execution:
+#        timeout:
+#          enabled: true
+#        isolation:
+#          semaphore:
+#            # Hystrix的超时,建议Hystrix的超时 > 其他组件的超时，否则将可能导致重试特性失效
+#            timeoutInMilliseconds: 30000
+
+
+#  redis:
+#    port: 6379
+#    host: 10.7.111.178
+#    timeout: 2000
+
+##新增jwt和oauth2的安全认证相关配置
+#security:
+#  oauth2:
+##    sso:
+##      # 跳转到SSO的登录路径默认为/login.
+##      login-path: http://192.168.50.46:8888/uaa/login
+#    client:
+#      clientId: client
+#      clientSecret: secret
+#      accessTokenUri: http://192.168.50.46:8888/uaa/oauth/token
+#      userAuthorizationUri: http://192.168.50.46:8888/uaa/oauth/authorize
+#    resource:
+#      jwt:
+#        # JWT token验证的value. 可以是对称加密或者PEMencoded RSA公钥. 可以使用URI作为value.
+#        keyValue: |
+#                  -----BEGIN PUBLIC KEY-----
+#                  MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAv1EtllIHX8dETjcQs68IFIfX9Eycr847OWZFnU9I+Vxbl7nx/B1uIrrynmHujerkXvoEbJCB0+jnyaHlp7xEVreKCWfYGB0GHZnXxCFyLqdF5hADs24OqIKBfJFi+T5jrusA8Ld9ZdJgHFkN4NjNEF0hDWA5+DmK7rzkD5tooSzFEBB+f2jdAP/TQwi3BZj2vFywhfBxisFRGojeWUJ1o2XtnShl61g6m0F+F9Rf7MeXQ8M8e0zWl0w19yCHR/FiBLKC0d635UDtHCMOE6u+HcqKg2D+dzRNpea5u5l7obUvLX0snGedEYEV7BVsFICqe0iy/avEBSmZ1su/WGlTEwIDAQAB
+#                  -----END PUBLIC KEY-----
+#      # 指定resource的唯一标识
+#      id: zuul
+#      # 指定service ID，默认为resource
+#      serviceId: ${PREFIX:}zuul
+
+

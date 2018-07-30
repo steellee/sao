@@ -1,0 +1,30 @@
+server:
+  port: 8401
+
+spring:
+  application:
+    name: sao-turbine
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8201/eureka/
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+      cors:
+        allowed-origins: "*"
+        allowed-methods: "*"
+
+turbine:
+  app-config: demoa-service,demob-service
+  aggregator:
+    # turbine聚集数据的粒度
+    clusterConfig: default
+  clusterNameExpression: new String("default")
+  combine-host: true
+  instanceUrlSuffix:
+    # turbine连接hystrix-dashboard的url
+    default: actuator/hystrix.stream

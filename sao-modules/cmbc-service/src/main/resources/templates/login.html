@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+<head>
+<title>Login thymeleaf</title>
+<link rel="stylesheet" th:href="@{/resources/components/bootstrap/bootstrap.min.css}" />
+</head>
+<body>
+	<div class="container">
+		<h1 layout:fragment="header">hello Login!</h1>
+		<form action="/sao/doLogin" method="post">
+			<button th:type="submit">doLogin</button>
+		</form>
+	</div>
+</body>
+</html>
