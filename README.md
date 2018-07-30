@@ -134,6 +134,3 @@
         
     2.2 demo中，可启动demoa-service和demob-service两个微服务后，在zipkin server中追踪调用链
 
-
-
-
