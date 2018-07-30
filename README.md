@@ -121,6 +121,11 @@
     2.2 登录用户名和密码：admin/admin
     2.2 登录后，在控台中将看到上面启动的两个微服务各维度的监控情况
     
+3.0 控台相关画面展示
+
+![图片名称](https://gitee.com/steellee/doc/raw/master/sao/img/sba1.png)
+![图片名称](https://gitee.com/steellee/doc/raw/master/sao/img/sba2.png)
+![图片名称](https://gitee.com/steellee/doc/raw/master/sao/img/sba3.png)
 
 ####**（二）sao-turbine断路器聚合监控：**
 
@@ -144,6 +149,11 @@
     3.2 访问Hystrix Dashboard网页：http://localhost:8401/hystrix
     3.3 Dashboard网页中，输入http://localhost:8401/turbine.stream回车
     3.4 Dashboard网页中，会出现多个聚合熔断服务
+
+4.0 控台相关画面展示
+
+![图片名称](https://gitee.com/steellee/doc/raw/master/sao/img/turbine1.png)
+![图片名称](https://gitee.com/steellee/doc/raw/master/sao/img/turbine2.png)
 
 
 #####**（三）Zipkin服务追踪调用链：**
@@ -176,13 +186,9 @@
 
 
 md原生
-| 水果        | 价格    |  数量  |
-| --------   | -----:   | :----: |
-| 香蕉        | $1      |   5    |
-| 苹果        | $1      |   6    |
-| 草莓        | $1      |   7    |
 
-
-其它
-图片![图片名称](https://cdn2.jianshu.io/assets/web/nav-logo-4c7bbafe27adc892f3046e6978459bac.png)
-链接[链接名称](http://baidu.com)
+| Tables        | Are           | Cool  |
+| ------------- |:-------------:| -----:|
+| col 3 is      | right-aligned | $1600 |
+| col 2 is      | centered      |   $12 |
+| zebra stripes | are neat      |    $1 |
