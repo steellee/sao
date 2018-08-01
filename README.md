@@ -94,9 +94,9 @@
         * 注意: 服务器环境需要自行配置：见下
 
 * 注意：
-    主从复制配置：         [参照链接](https://gitee.com/steellee/doc/tree/master/sao/config/mysql)
-    Redis集群服务端配置：  [参照链接](https://gitee.com/steellee/doc/tree/master/sao/config/redis)
-    Fastdfs服务端配置：    [参照链接](https://gitee.com/steellee/doc/tree/master/sao/config/fastdfs)
+    * 主从复制配置：       [参照链接](https://gitee.com/steellee/doc/tree/master/sao/config/mysql)
+    * Redis集群服务端配置：[参照链接](https://gitee.com/steellee/doc/tree/master/sao/config/redis)
+    * Fastdfs服务端配置：  [参照链接](https://gitee.com/steellee/doc/tree/master/sao/config/fastdfs) 
 
 
 2.0 启动准备
