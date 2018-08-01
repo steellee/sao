@@ -4,7 +4,8 @@ import com.lakala.sh.sao.common.constants.SysCode;
 
 /**
  * 远端服务调用异常
- *
+ * @author steellee
+ * @date 2018/06/28
  */
 public class RemoteException extends BaseException {
 	private static final long serialVersionUID = 1L;

@@ -4,7 +4,8 @@ import com.lakala.sh.sao.common.constants.SysCode;
 
 /**
  * 本地业务异常
- * 
+ * @author steellee
+ * @date 2018/06/28
  */
 public class LocalException extends BaseException {
 	private static final long serialVersionUID = 1L;

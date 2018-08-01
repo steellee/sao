@@ -6,6 +6,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 
+/**
+ * 统一异常处理
+ * @author steellee
+ * @date 2018/06/28
+ */
 @ControllerAdvice
 public class GlobalDefultExceptionHandler {
 
@@ -13,6 +18,7 @@ public class GlobalDefultExceptionHandler {
     @ExceptionHandler(Exception.class)
     @ResponseBody
     public String defultExcepitonHandler(HttpServletRequest request,Exception e) {
+        // todo
         e.printStackTrace();
         return "error";
     }

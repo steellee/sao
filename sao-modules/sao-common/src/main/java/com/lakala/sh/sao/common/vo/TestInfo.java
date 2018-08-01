@@ -2,6 +2,8 @@ package com.lakala.sh.sao.common.vo;
 
 /**
  * 测试用
+ * @author steellee
+ * @date 2018/06/28
  */
 public class TestInfo {
     String Name = "";

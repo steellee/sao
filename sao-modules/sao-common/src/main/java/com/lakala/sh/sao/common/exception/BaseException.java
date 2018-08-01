@@ -4,7 +4,8 @@ import com.lakala.sh.sao.common.constants.SysCode;
 
 /**
  * 异常信息封装
- *
+ * @author steellee
+ * @date 2018/06/28
  */
 public class BaseException extends RuntimeException {
 	private static final long serialVersionUID = 1L;

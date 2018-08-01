@@ -9,7 +9,8 @@ import java.util.concurrent.ThreadPoolExecutor;
 
 /**
  * 通过使用ThreadPoolTaskExecutor创建了一个线程池
- *
+ * @author steellee
+ * @date 2018/06/28
  */
 //@EnableAsync
 @Configuration

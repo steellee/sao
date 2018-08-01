@@ -10,9 +10,9 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * @Title: SensitiveInfo.java
- * @Copyright: Copyright (c) 2015
- * @Description: <br>敏感信息注解标记 <br>
+ * 敏感信息注解标记
+ * @author steellee
+ * @date 2018/06/28
  */
 @Target({ElementType.FIELD,ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)

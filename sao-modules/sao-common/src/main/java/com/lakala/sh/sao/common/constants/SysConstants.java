@@ -2,6 +2,8 @@ package com.lakala.sh.sao.common.constants;
 
 /**
  * 系统通用常量
+ * @author steellee
+ * @date 2018/06/28
  */
 public class SysConstants {
 

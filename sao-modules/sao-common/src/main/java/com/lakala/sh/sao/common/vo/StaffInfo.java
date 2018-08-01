@@ -8,6 +8,8 @@ import java.util.Date;
 
 /**
  * 测试用
+ * @author steellee
+ * @date 2018/06/28
  */
 public class StaffInfo  implements Serializable {
     private String staffId;

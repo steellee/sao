@@ -15,6 +15,8 @@ import springfox.documentation.spring.web.plugins.Docket;
  * 通过@Configuration注解，让Spring来加载该类配置。
  * 再通过@EnableSwagger2注解来启用Swagger2。
  * 访问http://localhost:8080/../swagger-ui.html
+ * @author steellee
+ * @date 2018/06/28
  */
 @Configuration
 public class SwaggerConfig {

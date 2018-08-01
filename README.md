@@ -18,7 +18,8 @@
  | MyBatis Generator   | 代码生成               | http://www.mybatis.org/generator/index.html/ |
  | PageHelper          | MyBatis物理分页插件    | http://git.oschina.net/free/Mybatis_PageHelper |
  | Druid               | 数据库连接池           | https://github.com/alibaba/druid/ |
- | Sharding-JDBC       | 分布式数据库中间件     | https://github.com/alibaba/druid/ |
+ | Sharding-JDBC       | 分布式数据库中间件     | http://shardingsphere.io/ |
+ | Fastdfs             | 轻量级分布式文件系统   | https://github.com/happyfish100/fastdfs/ |
  | Redis               | 分布式缓存数据库       | https://redis.io/ |
  | Swagger2            | 接口测试框架           | http://swagger.io/ |
  | Maven               | 项目构建管理           | http://maven.apache.org/ |
@@ -55,7 +56,7 @@
        
 ### 平台服务注册与发现服务中心(sao-eureka)
 
-    已支持单点/集群；
+    已支持单点/集群(178/179)；
     1，单点：http://localhost:8201/eureka/
     2，集群node1启动： java -jar sao-eureka-1.0.0-SNAPSHOT.jar --spring.profiles.active=node1 
        对应服务：http://10.7.111.178:8201/eureka/
@@ -81,14 +82,23 @@
     1.3 Sharding-JDBC 3.x 主从分离(一主一从)
         * 对应主从配置：application-shardingjdbc-masterslave.properties
         * 对应主从：sao_master（主），sao_slave（从）
-        * 注意:sql在cmbc-service的resource下；另如需主从复制，需要服务器自行配置；
-    1.4 Redis Sentinel模式集群
-    1.5 Spring-Session + Redis: SSO单点登录，分布式Session管理
-        * 对应redis配置：application-redis.properties
-        * 对应redis集群节点：10.7.111.179:6379,10.7.111.178:6380,10.7.111.178:6381
-        * 对应redis哨兵节点：10.7.111.179:26379,10.7.111.178:26479,10.7.111.178:26579DB
-        * 注意：集群服务器环境需要自行配置， 请参照url： [TODO](www.baidu.com)
-        
+        * 注意: sql在cmbc-service的resource下；另如需主从复制，需要服务器自行配置：见下
+    1.4 Spring-Session + Redis: SSO单点登录，分布式Session管理
+    1.5 Redis Sentinel模式集群
+        * 对应配置：application-redis.properties
+        * 对应集群节点：10.7.111.179:6379,10.7.111.178:6380,10.7.111.178:6381
+        * 对应哨兵节点：10.7.111.179:26379,10.7.111.178:26479,10.7.111.178:26579DB
+        * 注意: 集群服务器环境需要自行配置：见下
+    1.6 Fastdfs轻量级分布式文件系统
+        * 对应配置：fastdfs-client.properties,fdfs_client.conf
+        * 注意: 服务器环境需要自行配置：见下
+
+* 注意：
+    主从复制配置：         [参照链接](https://gitee.com/steellee/doc/tree/master/sao/config/mysql)
+    Redis集群服务端配置：  [参照链接](https://gitee.com/steellee/doc/tree/master/sao/config/redis)
+    Fastdfs服务端配置：    [参照链接](https://gitee.com/steellee/doc/tree/master/sao/config/fastdfs)
+
+
 2.0 启动准备
 
     2.1 已配置DB主从, 先建库和表，见sao_master.sql及sao_slave.sql

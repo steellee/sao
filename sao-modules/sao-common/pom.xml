@@ -243,6 +243,13 @@
 			<artifactId>sharding-jdbc-orchestration</artifactId>
 			<version>3.0.0.M1</version>
 		</dependency>-->
+
+		<!--fastdfs-client-->
+		<dependency>
+			<groupId>net.oschina.zcx7878</groupId>
+			<artifactId>fastdfs-client-java</artifactId>
+			<version>1.27.0.0</version>
+		</dependency>
 	</dependencies>
 
 	<build>

@@ -1,12 +1,13 @@
 package com.lakala.sh.sao.common.vo;
 
-/**
- * 分页bean
- */
-
 import java.io.Serializable;
 import java.util.List;
 
+/**
+ * 分页bean
+ * @author steellee
+ * @date 2018/06/28
+ */
 public class PageBean<T> implements Serializable {
     // 当前页
     private Integer currentPage = 1;

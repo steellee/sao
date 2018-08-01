@@ -13,6 +13,8 @@ import java.util.Properties;
 
 /**
  * beans 相关配置类
+ * @author steellee
+ * @date 2018/06/28
  */
 @Configuration
 public class BeansConfig {

@@ -12,6 +12,8 @@ import org.springframework.session.data.redis.config.annotation.web.http.EnableR
  * Spring Session企业级Java应用的session管理
  * HttpSession不再发挥作用，而是通过过滤器使用redis直接操作Session
  * 创建一个过滤器SessionRepositoryFilter，这个过滤器支持Spring Session代替HttpSession发挥作用
+ * @author steellee
+ * @date 2018/06/28
  */
 // 创建一个springSessionRepositoryFilter的bean对象去实现这个过滤器。过滤器负责代替HttpSession
 // 超时时间maxInactiveIntervalInSeconds，默认是1800秒

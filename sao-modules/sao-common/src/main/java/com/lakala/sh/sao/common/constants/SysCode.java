@@ -3,7 +3,8 @@ package com.lakala.sh.sao.common.constants;
 /**
  * 系统通用代码
  * 根据需要各系统继承此类以扩展消息描述
- *
+ * @author steellee
+ * @date 2018/06/28
  */
 public class SysCode {
 
