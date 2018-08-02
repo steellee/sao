@@ -8,6 +8,7 @@ spring:
 #        enabled: true
 
 
+
 server:
   port: 8101
 eureka:
@@ -18,7 +19,6 @@ eureka:
     serviceUrl:
       # Zuul客户端注册到了Eureka Server上，确保将多个Zuul节点集群高可用
       defaultZone: http://localhost:8201/eureka/
-#      defaultZone: http://10.7.111.178:8201/eureka/,http://10.7.111.179:8201/eureka/
 
 zuul:
   routes:
@@ -49,21 +49,21 @@ zuul:
 #      url: http://localhost:8080/ # 未使用Ribbon, 物理地址
 
 
-#>>>>>>>>>zuul限流
+#>>>>>>>>>zuul限流: https://github.com/marcosbarbero/spring-cloud-zuul-ratelimit
 #某个IP的客户端被限流并不影响其他客户端，即API网关对每个客户端限流是相互独立的
   ratelimit:
     # 开启限流
     enabled: true
     # 代理之后
     behind-proxy: true
-    # 限流数据存储
-#    repository: redis
+    # 限流数据存储(默认：IN_MEMORY)
+    repository: IN_MEMORY
     # 对应用来标识请求的key的前缀
     key-prefix: cmbc-service
 #policies 配置多个url共用一个限流次数
 #*********************************************************
 #  特定的路由
-# 测试客户端 30秒内允许60个访问，并且要求总请求时间小于20秒
+# 测试客户端 60秒内允许10个访问，并且要求总请求时间小于20秒
 #url：通过请求路径区分
 #origin：通过客户端IP地址区分
 #user：通过授权用户进行区分，也包括匿名用户
@@ -71,18 +71,29 @@ zuul:
     policies:
       # 针对此微服务请求url中含cmbc-service
       cmbc-service:
-        limit: 60
-#        quota: 20
-        refreshInterval: 30
+        # 单位时间设置，默认60s
+        refreshInterval: 60
+        # 单位时间内允许访问的次数
+        limit: 120
+        # 单位时间内允许访问的总时间（单位时间窗口期内，所有的请求的总时间不能超过这个时间限制）
+        quota: 10
 #        type:
+#          # 通过请求路径区分
+#          - url
+#          # 通过登录用户名进行区分，也包括匿名用户
+#          - user
+#          # 通过客户端IP地址区分
 #          - origin
         type[0]:
           type: url
-          matcher: /staff/count
+          matcher: /sao/staff/count
+
 #        type[1]:
 #          type: url
 #          matcher: /staff/getstaff?id=admin&accessToken=token
-
+#        type[1]:
+#          type: user
+#          matcher: anonymous
 
 #>>>>>>>>>开启zuul路由重试
   #任何一个服务实例关掉路由都会立刻转向另一个

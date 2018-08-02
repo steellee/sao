@@ -13,6 +13,7 @@
  | --------------------|--------------------    | ---------------------------------------- |
  | Spring Cloud        | 分布式微服务框架       | https://projects.spring.io/spring-cloud/ |
  | Spring Boot         | 快速应用开发Spring框架 | https://spring.io/projects/spring-boot/ |
+ | Ratelimit           | 网关限流框架           | https://github.com/marcosbarbero/spring-cloud-zuul-ratelimit/ |
  | Spring session      | 分布式Session管理      | http://projects.spring.io/spring-session/ |
  | MyBatis             | ORM框架                | http://www.mybatis.org/mybatis-3/zh/index.html/ |
  | MyBatis Generator   | 代码生成               | http://www.mybatis.org/generator/index.html/ |
@@ -48,9 +49,10 @@
  ================================================
 
 ### 平台网关(sao-gateway)
-
-    已整合灰度发布（蓝绿/金丝雀发布）、Ribbon均衡负载（自定义）请求限流、熔断降级、
-    Swagger API文档，动态加载的过滤器等功能
+   已整合灰度发布（蓝绿/金丝雀发布）、Ribbon均衡负载（自定义）请求限流、熔断降级、
+    Swagger API文档，动态加载的过滤器等功能:
+    
+    1, 网关限流框架 spring-cloud-zuul-ratelimit(BUCKET4J)
     
     对应服务：http://localhost:8101
        

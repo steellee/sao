@@ -21,6 +21,7 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
 		<spring-cloud.version>Finchley.RELEASE</spring-cloud.version>
+		<!--<bucket4j.version>4.0.1</bucket4j.version>-->
 	</properties>
 
 	<dependencies>
@@ -53,8 +54,25 @@
 		<dependency>
 			<groupId>com.marcosbarbero.cloud</groupId>
 			<artifactId>spring-cloud-zuul-ratelimit</artifactId>
-			<version>2.0.0.RELEASE</version>
+			<version>LATEST</version>
+			<!--<version>2.0.4.RELEASE</version>-->
 		</dependency>
+		<!--Bucket4j JCache-->
+		<!--<dependency>
+			<groupId>com.github.vladimir-bukhtoyarov</groupId>
+			<artifactId>bucket4j-core</artifactId>
+			<version>${bucket4j.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.github.vladimir-bukhtoyarov</groupId>
+			<artifactId>bucket4j-jcache</artifactId>
+			<version>${bucket4j.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.cache</groupId>
+			<artifactId>cache-api</artifactId>
+		</dependency>-->
+
 		<!--路由重试-->
 		<!--<dependency>-->
 			<!--<groupId>org.springframework.retry</groupId>-->
@@ -88,6 +106,7 @@
             <artifactId>ribbon-discovery-filter-spring-cloud-starter</artifactId>
             <version>RELEASE</version>
         </dependency>
+
 
 		<!--增加spring-cloud-starter-oauth2和jwt-->
 		<!--<dependency>-->

@@ -5,11 +5,12 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.scheduling.annotation.EnableAsync;
 
 @EnableSwagger2Doc        // 开启Swagger功能的注解
-//@EnableDiscoveryClient    // 激活Eureka中的DiscoveryClient实现，这样才能实现Controller中对服务信息的输出
+@EnableDiscoveryClient    // 激活Eureka中的DiscoveryClient实现，这样才能实现Controller中对服务信息的输出
 //@ImportResource(locations = {"classpath:META-INF/ctx/ctx_main.xml"})	// xml加载相关beans配置
 @ComponentScan(value = {"com.lakala.sh.sao"})
 @SpringBootApplication

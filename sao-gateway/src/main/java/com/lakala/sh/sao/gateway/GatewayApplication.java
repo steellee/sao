@@ -33,7 +33,7 @@ import java.io.File;
 @EnableSwagger2Doc		// 开启Swagger功能的注解
 @SpringBootApplication
 @RibbonClients(value = {
-@RibbonClient(name = "cmbc-service", configuration = RibbonConfiguration.class)
+	@RibbonClient(name = "cmbc-service", configuration = RibbonConfiguration.class)
 })
 public class GatewayApplication {
 

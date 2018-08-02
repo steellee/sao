@@ -64,6 +64,7 @@ public class StaffInfoController {
     @ApiOperation(value="获取员工总数")
     @RequestMapping(value={"count"})
     public int getUserListSize(HttpServletRequest httpRequest, HttpServletResponse httpResponse) throws Exception {
+        Thread.sleep(3000);
 //       log.info(port + "=port;Authorization-------------------------->"+httpRequest.getHeaders("Authorization").nextElement());
 //        throw new Exception("出现业务错误！");
         return staffInfoService.findAllCount();
