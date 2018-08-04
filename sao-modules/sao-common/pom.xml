@@ -6,7 +6,6 @@
 		<artifactId>sao-modules</artifactId>
 		<version>1.0.0-SNAPSHOT</version>
 	</parent>
-
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.lakala.sh.sao</groupId>
 	<artifactId>sao-common</artifactId>
@@ -15,25 +14,6 @@
 	<packaging>jar</packaging>
 
 	<dependencies>
-		<!-- Lakala Microservice framework -->
-		<!--<dependency>
-			<groupId>com.lakala.sh.payment.framework</groupId>
-			<artifactId>framework-core</artifactId>
-			<version>1.0.11</version>
-		</dependency>
-		<dependency>
-			<groupId>com.lakala.sh.payment.framework</groupId>
-			<artifactId>framework-remote</artifactId>
-			<version>1.0.11</version>
-		</dependency>
-		&lt;!&ndash; lakala Kafka &ndash;&gt;
-		<dependency>
-			<groupId>com.lakala.msc</groupId>
-			<artifactId>msc-core</artifactId>
-			<version>1.1.1</version>
-		</dependency>-->
-
-
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>

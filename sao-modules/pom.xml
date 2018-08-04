@@ -20,6 +20,7 @@
 		<module>cmbc-service</module>
 		<module>demoa-service</module>
 		<module>demob-service</module>
+		<module>mq-service</module>
     </modules>
 
 </project>

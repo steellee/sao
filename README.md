@@ -28,8 +28,7 @@
  | Hystrix-dashboard   | Hystrix的仪表盘组件    | https://github.com/spring-cloud-samples/hystrix-dashboard/ |
  | Turbine             | Hystrix熔断聚合组件    | https://github.com/spring-cloud-samples/turbine/ |
  | Zipkin              | 分布式链路跟踪系统     | https://zipkin.io/ |
-
-
+ | Kafka/RabbitMQ      | 消息中间件             | http://kafka.apache.org https://www.rabbitmq.com/ |
 
 ## SAO脚手架模块说明
 
@@ -45,7 +44,7 @@
     * 	cmbc-service：demo用微服务
     * 	demoa-service：demo用微服务
     * 	demob-service：demo用微服务
-    
+    * 	mq-service：消息中心
  ================================================
 
 ### 平台网关(sao-gateway)
@@ -65,7 +64,6 @@
     3，集群node2启动： java -jar sao-eureka-1.0.0-SNAPSHOT.jar --spring.profiles.active=node2
        对应服务：http://10.7.111.179:8201/eureka/
         
-
 ### 平台配置中心(sao-config)
 
     已支持Git/DB；
@@ -74,7 +72,6 @@
     
     对应服务：http://localhost:8301
     
-
 ### 业务微服务Demo(cmbc-service)
 
 1.0 支持功能点：
@@ -110,6 +107,11 @@
     对应服务：http://localhost:8501/swagger-ui.html
     
  
+### 消息中心Demo(mq-service)
+    
+    已支持RabbitMQ /Kafka / RocketMQ, 具体详细说明，参照mq-service工程下的readme(MQ).md；
+    
+    
 ### 管理监控(sao-manager)
 
 #### **（一）sao-sba综合管理监控：**

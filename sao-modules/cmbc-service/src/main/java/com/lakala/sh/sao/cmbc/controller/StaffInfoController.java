@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -50,14 +51,18 @@ public class StaffInfoController {
     @ApiOperation(value="更新员工详细信息", notes="根据url的id来指定更新对象，并根据传过来的user信息来更新员工详细信息")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "id", value = "员工ID", dataType = "String"),
-            @ApiImplicitParam(name = "staffInfo", value = "员工详细实体staffInfo", required = true, dataType = "StaffInfo")
+            @ApiImplicitParam(name = "staffInfo", value = "员工详细实体staffInfo", required = true, dataType = "StaffInfo"),
+            @ApiImplicitParam(name = "count", value = "插入数量", dataType = "Integer")
     })
     @RequestMapping(value="add/{id}", method=RequestMethod.PUT)
-    public String addUser(@PathVariable String id, @RequestBody StaffInfo staffInfo) {
-
-        staffInfo.setStaffCode(id);
-        staffInfo.setStaffId(id);
-        staffInfoService.insertSelective(staffInfo);
+    public String addUser(@PathVariable String id, @RequestBody StaffInfo staffInfo, int count) {
+        Date start = new Date();
+        for (int i = 0; i < count; i++) {
+            staffInfo.setStaffCode(id);
+            staffInfo.setStaffId(id);
+            staffInfoService.insertSelective(staffInfo);
+        }
+        log.info("end, time is {}: "+ (new Date().getTime() - start.getTime()) / 1000);
         return "success";
     }
 

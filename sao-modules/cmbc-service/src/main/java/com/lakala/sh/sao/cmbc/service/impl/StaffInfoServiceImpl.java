@@ -7,14 +7,18 @@ import com.lakala.sh.sao.common.vo.PageBean;
 import com.lakala.sh.sao.common.vo.StaffInfo;
 import com.lakala.sh.sao.cmbc.mapper.StaffInfoMapper;
 import com.lakala.sh.sao.cmbc.service.StaffInfoService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.util.Date;
 import java.util.List;
 
+@Slf4j
 @Service
 public class StaffInfoServiceImpl implements StaffInfoService {
+
     @Autowired StaffInfoMapper staffInfoMapper;
 
 //    @DS("localdbDS")
@@ -58,8 +62,9 @@ public class StaffInfoServiceImpl implements StaffInfoService {
     public List<StaffInfo> findItemByPage(int currentPage,int pageSize) {
         // 设置分页信息，分别是当前页数和每页显示的总记录数【记住：必须在mapper接口中的方法执行之前设置该分页信息】
         PageHelper.startPage(currentPage, pageSize);
-
+        Date start = new Date();
         List<StaffInfo> allItems = staffInfoMapper.getAllStaff();    //全部员工
+        log.info("end, time is {}: "+ (new Date().getTime() - start.getTime()) / 1000);
         int countNums = staffInfoMapper.findAllCount();              //总记录数
         PageBean<StaffInfo> pageData = new PageBean<>(currentPage, pageSize, countNums);
         pageData.setItems(allItems);
