@@ -15,6 +15,11 @@
 	</parent>
 
 	<dependencies>
+		<!--依赖服oauth2认证-->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-oauth2</artifactId>
+		</dependency>
 		<!--依赖服务配置中心-->
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
@@ -81,6 +86,8 @@
 			<artifactId>ribbon-discovery-filter-spring-cloud-starter</artifactId>
 			<version>2.1.0</version>
 		</dependency>
+
+
 	</dependencies>
 
 	<build>

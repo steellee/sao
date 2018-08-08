@@ -44,9 +44,9 @@
 //
 //    @Override
 //    public boolean shouldFilter() {
-//        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-//        if (auth instanceof OAuth2Authentication) {
-//            Object details = auth.getDetails();
+//        Authentication com.lakala.sh.sa.auth = SecurityContextHolder.getContext().getAuthentication();
+//        if (com.lakala.sh.sa.auth instanceof OAuth2Authentication) {
+//            Object details = com.lakala.sh.sa.auth.getDetails();
 //            if (details instanceof OAuth2AuthenticationDetails) {
 //                OAuth2AuthenticationDetails oauth = (OAuth2AuthenticationDetails) details;
 //                RequestContext ctx = RequestContext.getCurrentContext();
@@ -80,10 +80,10 @@
 //        }
 //        if (restTemplate != null) {
 //            // In case it needs to be refreshed
-//            OAuth2Authentication auth = (OAuth2Authentication) SecurityContextHolder
+//            OAuth2Authentication com.lakala.sh.sa.auth = (OAuth2Authentication) SecurityContextHolder
 //                .getContext().getAuthentication();
 //            if (restTemplate.getResource().getClientId()
-//                .equals(auth.getOAuth2Request().getClientId())) {
+//                .equals(com.lakala.sh.sa.auth.getOAuth2Request().getClientId())) {
 //                try {
 //                    value = restTemplate.getAccessToken().getValue();
 //                }

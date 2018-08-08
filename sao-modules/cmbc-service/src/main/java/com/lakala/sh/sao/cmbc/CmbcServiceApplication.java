@@ -8,6 +8,7 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.scheduling.annotation.EnableAsync;
+import org.springframework.security.oauth2.config.annotation.web.configuration.EnableOAuth2Client;
 
 @EnableSwagger2Doc        // 开启Swagger功能的注解
 @EnableDiscoveryClient    // 激活Eureka中的DiscoveryClient实现，这样才能实现Controller中对服务信息的输出
@@ -17,6 +18,7 @@ import org.springframework.scheduling.annotation.EnableAsync;
 //@EnableSwagger2    // 启用Swagger2
 //@EnableCaching	// 自动化配置合适的缓存管理器（MyCacheManager）
 @EnableAsync	// 让@Async注解能够生效
+@EnableOAuth2Client		// 启用Oauth2认证授权Web服务
 public class CmbcServiceApplication extends SpringBootServletInitializer
 		implements CommandLineRunner
 {

@@ -45,6 +45,7 @@
     * 	demoa-service：demo用微服务
     * 	demob-service：demo用微服务
     * 	mq-service：消息中心
+    * 	auth-service：接口认证中心
  ================================================
 
 ### 平台网关(sao-gateway)
@@ -108,9 +109,11 @@
     
  
 ### 消息中心Demo(mq-service)
+   已支持RabbitMQ /Kafka /RocketMQ, 具体详细说明: [参照链接](https://gitee.com/steellee/doc/blob/master/sao/config/mq/readme(MQ).md)
     
-    已支持RabbitMQ /Kafka / RocketMQ, 具体详细说明，参照mq-service工程下的readme(MQ).md；
-    
+ 
+### 接口认证中心Demo(auth-service)
+   已支持Oauth2 客户端方式认证, 具体详细说明: [参照链接](https://gitee.com/steellee/doc/blob/master/sao/config/oauth2/readme(auth).md)
     
 ### 管理监控(sao-manager)
 

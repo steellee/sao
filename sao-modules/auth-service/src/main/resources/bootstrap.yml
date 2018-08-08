@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: auth-service
+  redis:
+    host: 127.0.0.1
+    database: 0
+    port: 6379
+server:
+  port: 8599
+  servlet:
+    context-path: /uaa
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8201/eureka/
+
+#开启debug信息
+logging:
+  level:
+    org.springframework: DEBUG

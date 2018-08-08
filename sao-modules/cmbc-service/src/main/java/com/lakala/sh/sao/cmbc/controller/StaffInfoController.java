@@ -1,14 +1,14 @@
 package com.lakala.sh.sao.cmbc.controller;
 
-import com.lakala.sh.sao.common.exception.BaseException;
-import com.lakala.sh.sao.common.vo.StaffInfo;
 import com.lakala.sh.sao.cmbc.service.StaffInfoService;
+import com.lakala.sh.sao.common.vo.StaffInfo;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -22,6 +22,7 @@ import java.util.List;
  */
 
 @Slf4j
+@RefreshScope       // 代码中需要动态刷新配置
 @RestController
 @RequestMapping("/staff")
 public class StaffInfoController {

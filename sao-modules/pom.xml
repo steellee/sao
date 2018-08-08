@@ -21,6 +21,7 @@
 		<module>demoa-service</module>
 		<module>demob-service</module>
 		<module>mq-service</module>
+		<module>auth-service</module>
     </modules>
 
 </project>
