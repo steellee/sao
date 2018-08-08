@@ -5,7 +5,9 @@ import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;
 
 /**
- * 消息消费者Receiver
+ * Rabbit Demo: 消费者
+ * @author steellee
+ * @date 2018/07/30
  */
 @Component
 @RabbitListener(queues = "hello") // todo 用时打开

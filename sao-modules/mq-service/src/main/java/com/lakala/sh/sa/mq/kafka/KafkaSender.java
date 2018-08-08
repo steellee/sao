@@ -11,6 +11,11 @@ import org.springframework.util.concurrent.ListenableFuture;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+/**
+ * Kafka Demo: 生产者
+ * @author steellee
+ * @date 2018/07/30
+ */
 //@Component
 //@EnableScheduling // todo 用时打开
 public class KafkaSender {

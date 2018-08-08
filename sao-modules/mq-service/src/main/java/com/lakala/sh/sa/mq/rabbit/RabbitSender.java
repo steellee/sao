@@ -8,8 +8,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Date;
 
+
 /**
- * 消息生产者
+ * Rabbit Demo: 生产者
+ * @author steellee
+ * @date 2018/07/30
  */
 @Component
 @RestController

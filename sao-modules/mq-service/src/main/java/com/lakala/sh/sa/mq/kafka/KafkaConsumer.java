@@ -5,6 +5,11 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Component;
 
+/**
+ * Kafka Demo: 消费者
+ * @author steellee
+ * @date 2018/07/30
+ */
 @Slf4j
 //@Component  // todo 用时打开
 public class KafkaConsumer {

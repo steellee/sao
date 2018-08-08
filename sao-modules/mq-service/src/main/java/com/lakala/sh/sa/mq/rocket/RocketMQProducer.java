@@ -11,6 +11,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+/**
+ * Rocket Demo: 生产者
+ * @author steellee
+ * @date 2018/07/30
+ */
 @RestController
 public class RocketMQProducer {
     @Autowired

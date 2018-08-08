@@ -5,6 +5,11 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 
+/**
+ * Rocket Demo: 消费者
+ * @author steellee
+ * @date 2018/07/30
+ */
 @Slf4j
 @Component
 public class RocketMQConsumer {

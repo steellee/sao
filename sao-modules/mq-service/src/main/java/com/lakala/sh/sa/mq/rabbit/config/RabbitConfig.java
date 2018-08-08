@@ -6,6 +6,8 @@ import org.springframework.context.annotation.Configuration;
 
 /**
  * RabbitMQ的配置类:用来配置队列、交换器、路由等高级信息
+ * @author steellee
+ * @date 2018/07/30
  */
 @Configuration
 public class RabbitConfig {
