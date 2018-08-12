@@ -9,8 +9,8 @@ import java.util.Map;
 
 /**
  * 身份证转换工具类
- * @author chengSi
- * @date 2016/10/27
+ * @author steellee
+ * @date 2018/07/28
  *
  */
 public class IdCardUtil {

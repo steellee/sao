@@ -129,7 +129,7 @@ public class JDomHandler {
 	 * 
 	 * @param path
 	 *            输入的指定报文节点的路径
-	 * @param attribute
+	 * @param attributeName
 	 *            指定的报文节点的属性
 	 * @param value
 	 *            设定相关属性的值
@@ -192,13 +192,11 @@ public class JDomHandler {
 	 * 
 	 * @param path
 	 *            输入的指定报文节点的路径
-	 * @param attribute
-	 *            指定的报文节点的属性
 	 * @return
 	 * @throws JDOMException
 	 * @throws JDomHandlerException
 	 **/
-	public Document setNodeValueWithIndex(String path, String name, String value, int index) throws JDOMException, JDomHandlerException {
+	public Document setNodeValueWithIndex(String path, String value, int index) throws JDOMException, JDomHandlerException {
 		this.checkPathNodes(path);
 		List<Element> valueList = this.getNodeValues(path);
 		if (valueList != null) {
@@ -340,13 +338,13 @@ public class JDomHandler {
 
 	/**
 	 * 设置指定节点的值
-	 * 
-	 * @param message
-	 *            要操作的Document对象
+	 *
 	 * @param path
 	 *            路径
 	 * @param nodeName
 	 *            节点名称
+	 * @param value
+	 *            添加的节点的值
 	 * @return 设置指定节点值完成后的Doucument对象
 	 * @throws JDomHandlerException
 	 * @throws JDOMException
@@ -523,7 +521,6 @@ public class JDomHandler {
 	 * 
 	 * @param parentElementPath
 	 * @param elementName
-	 * @param value
 	 * @return
 	 * @throws JDOMException
 	 * @throws JDomHandlerException
@@ -546,13 +543,13 @@ public class JDomHandler {
 
 	/**
 	 * 设置指定节点的值,先检测所在路径的节点是否存在，如果不存在则添加节点
-	 * 
-	 * @param message
-	 *            要操作的Document对象
+	 *
 	 * @param path
 	 *            路径
 	 * @param nodeName
 	 *            节点名称
+	 * @param value
+	 *            添加的节点的值
 	 * @return 设置指定节点值完成后的Doucument对象
 	 * @throws JDomHandlerException
 	 * @throws JDOMException
@@ -625,5 +622,4 @@ public class JDomHandler {
 			}
 		}
 	}
-
 }

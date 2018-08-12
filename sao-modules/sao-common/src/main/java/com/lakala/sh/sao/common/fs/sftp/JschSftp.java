@@ -1,7 +1,7 @@
-package com.lakala.sh.sao.common.utils.sftp;
+package com.lakala.sh.sao.common.fs.sftp;
 
 import com.jcraft.jsch.*;
-import com.lakala.sh.sao.common.utils.FileUtils;
+import com.lakala.sh.sao.common.fs.local.FileUtils;
 import org.apache.log4j.Logger;
 
 import java.io.*;
@@ -9,15 +9,13 @@ import java.util.Properties;
 import java.util.Vector;
 
 /**
- * ClassName: Sftp 连接类包括上传下载<br/>
- * Function: <br/>
- * date: 2014-2-24 上午10:28:10 <br/>
- * @author laich.<br/>
- * @修改: Wushuicheng, 2014-04-24.
+ * Sftp(Jsch) 连接类包括上传下载
+ * @author steellee
+ * @date 2018/08/11
  */
-public class Sftp {
+public class JschSftp {
 
-	private static final Logger LOG = Logger.getLogger(Sftp.class);
+	private static final Logger LOG = Logger.getLogger(JschSftp.class);
 
 	/**
 	 * 连接sftp服务器
@@ -210,11 +208,23 @@ public class Sftp {
 	/**
 	 * sftpClose:关闭Sftp <br/>
 	 * 
-	 * @param channel
+	 * @param sftp
 	 */
-	public static void sftpClose(ChannelSftp channel) {
+	public static void sftpClose(ChannelSftp sftp) {
+		if (null == sftp) {
+			return;
+		}
 		try {
-			channel.getSession().disconnect();
+			try {
+				if (!sftp.isClosed()) {
+					sftp.disconnect();
+				}
+			} finally {
+				Session session = sftp.getSession();
+				if (session.isConnected()) {
+					session.disconnect();
+				}
+			}
 		} catch (JSchException e) {
 			LOG.error("sftp disconnect exception:", e);
 		}
@@ -297,26 +307,26 @@ public class Sftp {
 
 	// 测试例子
 	public static void main(String[] args) {
-		Sftp sf = new Sftp();
-		String host = "192.168.88.40";
-		int port = 3210;
-		String username = "gwpayfast";
-		String password = "gzzyzz.com";
-		String directory = "/home/gwpayfast/";
+		JschSftp sf = new JschSftp();
+		String host = "10.7.111.178";
+		int port = 22;
+		String username = "elive";
+		String password = "lakala";
+		String directory = "/home/elive/1/test/";
 		
-		String downloadFile = "Result.txt";
-		String saveFile = "F:\\123.txt";
+		String downloadFile = "nginx.conf";
+		String saveFile = "D:\\nginx123.conf";
 		
-		String uploadFile = "E:\\PINGANBANK-NET-B2C-GZ20140523clear.txt";
-		// String deleteFile = "delete.txt";
+		String uploadFile = "D:\\test01.txt.rar";
+		 String deleteFile = "test01.txt.rar";
 		ChannelSftp sftp = sf.connect(host, port, username, password);
 		sf.upload(directory, uploadFile, sftp);
 //		sf.download(directory, downloadFile, saveFile, sftp);
-		// sf.delete(directory, deleteFile, sftp);
+//		 sf.delete(directory, deleteFile, sftp);
 		try {
 //			sf.creatDir(directory, sftp);
-			// sftp.cd(directory);
-			// System.out.println("finished");
+//			 sftp.cd(directory);
+//			 System.out.println("finished");
 //			sf.sftpClose(sftp);
 		} catch (Exception e) {
 			LOG.error(e);

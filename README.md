@@ -30,6 +30,7 @@
  | Turbine             | Hystrix熔断聚合组件    | https://github.com/spring-cloud-samples/turbine/ |
  | Zipkin              | 分布式链路跟踪系统     | https://zipkin.io/ |
  | Kafka/RabbitMQ      | 消息中间件             | http://kafka.apache.org https://www.rabbitmq.com/ |
+ | easypoi             | Excel快速POI工具类     | https://gitee.com/lemur/easypoi/ |
 
 ## 三，SAO脚手架模块说明
 
@@ -116,8 +117,21 @@
  
 ### （六）接口认证中心Demo(auth-service)
    已支持Oauth2 客户端方式认证, 具体详细说明: [参照链接](https://gitee.com/steellee/doc/blob/master/sao/config/oauth2/readme(auth).md)
+
+
+### （七） 工具类共通配置中心Demo(sao-common)
+* 已支持功能列表：
+    * 各种微服务所需配置(cache, db, spring-session)
+    * Fastdfs/Ftp/Sftp自建文件服务器的上传，下载
+    * Easypoi支持Excel的快速导入导出,Excel模板导出,Word模板导出
+    * Http/Https client工具
+    * AES对称，RSA非对称加解密，Hex十六进制/数组互转，Base64编码等安全工具
+    * 身份证，基本类型等校验工具
+    * UUID，22/24位纳秒时间ID,SnowFlake分布式ID等生成工具
+    * ...各种基本工具
     
-### （七）管理监控(sao-manager)
+   
+### （八）管理监控(sao-manager)
 
 #### **A, sao-sba综合管理监控：**
 

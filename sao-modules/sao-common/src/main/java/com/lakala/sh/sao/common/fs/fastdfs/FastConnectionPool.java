@@ -1,4 +1,4 @@
-package com.lakala.sh.sao.common.fastdfs;
+package com.lakala.sh.sao.common.fs.fastdfs;
 
 import org.csource.fastdfs.*;
 import org.springframework.stereotype.Component;

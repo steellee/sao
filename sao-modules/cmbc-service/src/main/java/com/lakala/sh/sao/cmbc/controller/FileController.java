@@ -1,7 +1,7 @@
 package com.lakala.sh.sao.cmbc.controller;
 
 import com.lakala.sh.sao.common.constants.SysCode;
-import com.lakala.sh.sao.common.fastdfs.FastDFSClient;
+import com.lakala.sh.sao.common.fs.fastdfs.FastDFSClient;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;

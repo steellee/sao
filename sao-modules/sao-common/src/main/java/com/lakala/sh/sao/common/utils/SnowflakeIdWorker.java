@@ -4,10 +4,14 @@
 package com.lakala.sh.sao.common.utils;
 
 /**
- * Twitter_Snowflake<br>
+ *
+ * Twitter_Snowflake：分布式ID生成雪花算法<br>
+ *		https://blog.csdn.net/li396864285/article/details/54668031
+ *
  * SnowFlake的结构如下(每部分用-分开):<br>
  * 0 - 0000000000 0000000000 0000000000 0000000000 0 - 00000 - 00000 -
  * 000000000000 <br>
+ *
  * 1位标识，由于long基本类型在Java中是带符号的，最高位是符号位，正数是0，负数是1，所以id一般是正数，最高位是0<br>
  * 41位时间截(毫秒级)，注意，41位时间截不是存储当前时间的时间截，而是存储时间截的差值（当前时间截 - 开始时间截)
  * 得到的值），这里的的开始时间截，一般是我们的id生成器开始使用的时间，由我们程序来指定的（如下下面程序IdWorker类的startTime属性）。
@@ -151,7 +155,7 @@ public class SnowflakeIdWorker {
 	// ==============================Test=============================================
 	/** 测试 */
 	public static void main(String[] args) {
-		SnowflakeIdWorker idWorker = new SnowflakeIdWorker(100L, 0);
+		SnowflakeIdWorker idWorker = new SnowflakeIdWorker(10L, 0L);
 		for (int i = 0; i < 1000; i++) {
 			long id = idWorker.nextId();
 			// System.out.println(Long.toBinaryString(id));

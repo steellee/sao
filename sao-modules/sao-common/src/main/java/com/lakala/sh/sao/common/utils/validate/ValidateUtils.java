@@ -13,15 +13,14 @@ import java.util.regex.Pattern;
 /**
  * 
  * @描述: 验证工具类.
- * @作者: WuShuicheng .
- * @创建时间: 2013-8-9,上午10:15:34 .
- * @版本: 1.0 .
+ * @author steellee
+ * @date 2018/07/28
  */
 public class ValidateUtils {
 	
 	/**
 	 * 判断传入参数是否为字母与数字的组合字符串,而不是单一的字母或者数字
-	 * @param psw
+	 * @param pwd
 	 * @return
 	 */
 	public static boolean isPassword(String pwd){
@@ -222,7 +221,7 @@ public class ValidateUtils {
 	/**
 	 * 是否为邮编
 	 * 
-	 * @param phone
+	 * @param post
 	 * @return
 	 */
 	public static boolean isPostCode(String post) {
@@ -233,7 +232,7 @@ public class ValidateUtils {
 	/**
 	 * 是否为日期格式：yyyy-MM-dd
 	 * 
-	 * @param date
+	 * @param dateStr
 	 * @return
 	 */
 	public static boolean isDate(String dateStr) {
@@ -474,7 +473,7 @@ public class ValidateUtils {
 	 * 
 	 * @param str
 	 *            待检查的字符串
-	 * @param minLength
+	 * @param maxLength
 	 *            最小长度
 	 */
 	public static boolean checkStrMaxLengthByBytes(String str, Integer maxLength) {

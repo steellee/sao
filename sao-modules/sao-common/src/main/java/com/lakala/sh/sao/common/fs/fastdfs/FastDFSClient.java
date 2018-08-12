@@ -1,4 +1,4 @@
-package com.lakala.sh.sao.common.fastdfs;
+package com.lakala.sh.sao.common.fs.fastdfs;
 
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -15,7 +15,7 @@ import java.util.Iterator;
 import java.util.Map;
 
 /**
- * fastdfsClient 的使用
+ * fastdfs Client 的使用
  * @author steellee
  * @date 2018/07/28
  */
